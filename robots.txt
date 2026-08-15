@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rohithkumarsaravana.github.io/portfolio/sitemap.xml
