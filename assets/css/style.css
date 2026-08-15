@@ -1,16 +1,47 @@
 /* ============================================================
    Rohithkumar Saravanan — Portfolio
-   Custom styles layered on top of Tailwind utility classes.
+   "Node Field" system — deep navy ground, warm gold + cool blue
+   accents, network-graph motif. Custom styles layered on top of
+   Tailwind utility classes.
    ============================================================ */
 
 :root {
     scrollbar-gutter: stable;
     --ease: cubic-bezier(.22, .61, .36, 1);
-    --dur: 420ms;
+    --dur: 480ms;
+
+    /* ---- Color tokens ---- */
+    --bg: #0e1116;
+    --bg-alt: #10141b;
+    --surface: #171b22;
+    --surface-hover: #1c212b;
+    --line: #262c38;
+    --line-soft: #1b202a;
+    --text: #e7eaf0;
+    --text-muted: #9199a8;
+    --text-faint: #5b6478;
+    --gold: #eab05a;
+    --gold-soft: rgba(234, 176, 90, 0.12);
+    --gold-line: rgba(234, 176, 90, 0.3);
+    --blue: #5b8def;
+    --blue-soft: rgba(91, 141, 239, 0.12);
+    --blue-line: rgba(91, 141, 239, 0.3);
 }
 
 body {
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'General Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+h1, h2, h3,
+.font-display {
+    font-family: 'Cabinet Grotesk', 'General Sans', ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.01em;
+}
+
+.font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 }
 
 html {
@@ -25,16 +56,27 @@ html {
 
 /* ---- Shared gradient text ---- */
 .text-gradient {
-    background: linear-gradient(to right, #a78bfa, #7c3aed, #c084fc);
+    background: linear-gradient(to right, #f4cf8f, #eab05a, #c98a3e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
+/* ---- Node-field ambient background ---- */
+#nodeField {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.55;
+}
+
 /* ---- Subtle reveal on scroll ---- */
 .reveal {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(16px);
     filter: saturate(.9);
     transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), filter var(--dur) var(--ease);
     transition-delay: var(--d, 0ms);
@@ -55,9 +97,9 @@ html {
 
 .card:hover {
     transform: translateY(-6px) scale(1.01);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
-    border-color: rgba(255, 255, 255, 0.18);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+    border-color: var(--gold-line);
+    background: linear-gradient(180deg, rgba(234, 176, 90, 0.05), rgba(255, 255, 255, 0.02));
 }
 
 /* ---- Badges ---- */
@@ -66,18 +108,18 @@ html {
     padding: 6px 14px;
     border-radius: 9999px;
     background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-muted);
     font-size: 0.85rem;
     transition: all 0.3s ease;
 }
 
 .badge:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.25);
-    color: white;
+    background: var(--blue-soft);
+    border-color: var(--blue-line);
+    color: var(--text);
 }
 
 /* ---- Links ---- */
@@ -95,7 +137,7 @@ a.slink:hover {
 
 /* ---- Header Glass ---- */
 .glass {
-    background: color-mix(in oklab, #0a0a0a 60%, transparent);
+    background: color-mix(in oklab, var(--bg) 62%, transparent);
     backdrop-filter: saturate(140%) blur(10px);
     -webkit-backdrop-filter: saturate(140%) blur(10px);
 }
@@ -120,8 +162,8 @@ a.slink:hover {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+    border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
@@ -134,7 +176,7 @@ a.slink:hover {
 .glass-circle:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
-    border-color: rgba(255, 255, 255, 0.25);
+    border-color: var(--gold-line);
 }
 
 .glass-circle img {
@@ -146,7 +188,7 @@ a.slink:hover {
 
 .skill-label {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-muted);
     margin-top: 6px;
     letter-spacing: 0.4px;
     text-transform: uppercase;
@@ -178,18 +220,18 @@ a.slink:hover {
 }
 
 .cta-primary {
-    background: linear-gradient(180deg, #ffffff, #f8f8f8);
-    color: #0b0b0b;
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: linear-gradient(180deg, #f7dba8, #eab05a);
+    color: #17130a;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     padding: 0.7rem 1.2rem;
     font-size: 1rem;
-    box-shadow: 0 14px 30px rgba(11, 11, 11, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    box-shadow: 0 14px 30px rgba(234, 176, 90, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     transform-origin: center;
 }
 
 .cta-secondary {
-    background: linear-gradient(180deg, rgba(124, 58, 237, 0.9), rgba(109, 40, 217, 0.8));
-    border: 1px solid rgba(124, 58, 237, 0.18);
+    background: linear-gradient(180deg, rgba(91, 141, 239, 0.92), rgba(63, 106, 199, 0.85));
+    border: 1px solid rgba(91, 141, 239, 0.22);
     color: white;
 }
 
@@ -243,9 +285,9 @@ a.slink:hover {
     gap: 6px;
     padding: 4px 12px;
     border-radius: 9999px;
-    background: rgba(250, 204, 21, 0.12);
-    border: 1px solid rgba(250, 204, 21, 0.25);
-    color: rgba(250, 204, 21, 0.9);
+    background: var(--gold-soft);
+    border: 1px solid var(--gold-line);
+    color: var(--gold);
     font-size: 0.78rem;
     font-weight: 600;
     letter-spacing: 0.3px;
@@ -254,17 +296,19 @@ a.slink:hover {
 /* ---- Impact stat strip ---- */
 .stat-tile {
     padding: 1.5rem 1rem;
-    border-radius: 1.25rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    border-radius: 0.85rem;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
     text-align: center;
 }
 
 .stat-num {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
     font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1;
-    background: linear-gradient(to right, #ffffff, #d8b4fe);
+    font-variant-numeric: tabular-nums;
+    background: linear-gradient(to right, #ffffff, #f4cf8f);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -275,34 +319,35 @@ a.slink:hover {
     font-size: 0.78rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--text-faint);
 }
 
 /* ---- Certification cards ---- */
 .cert-icon {
     width: 44px;
     height: 44px;
-    border-radius: 0.85rem;
+    border-radius: 0.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    background: rgba(124, 58, 237, 0.14);
-    border: 1px solid rgba(124, 58, 237, 0.25);
-    color: #c4b5fd;
+    background: var(--gold-soft);
+    border: 1px solid var(--gold-line);
+    color: var(--gold);
 }
 
 .cert-group-title {
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--text-faint);
 }
 
 /* ---- Footer ---- */
 .footer-link {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-muted);
     transition: color 160ms var(--ease);
 }
 
-.footer-link:hover { color: rgba(255, 255, 255, 0.95); }
+.footer-link:hover { color: var(--gold); }
