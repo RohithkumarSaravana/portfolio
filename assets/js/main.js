@@ -47,17 +47,6 @@ if (!prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
     });
 }
 
-// ---- Cursor glow (skip on touch devices / reduced motion) ----
-const glow = document.getElementById('glow');
-if (glow && !prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
-    window.addEventListener('mousemove', (e) => {
-        requestAnimationFrame(() => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
-        });
-    });
-}
-
 // ---- Stat counters — animate numeric stat tiles into view ----
 function animateCount(el) {
     const target = parseFloat(el.dataset.count);
@@ -204,6 +193,12 @@ window.addEventListener('load', () => {
             stagger: 0.12,
             delay: 0.2,
         });
+        // Safety net: a backgrounded/throttled tab (opened in the
+        // background, or a browser that pauses rAF for an inactive
+        // tab) can leave this tween stuck mid-way. Force the final
+        // state after a generous timeout so the name is never stuck
+        // invisible.
+        setTimeout(() => gsap.set(lines, { yPercent: 0, opacity: 1 }), 2500);
     }
 
     if (!prefersReducedMotion) {

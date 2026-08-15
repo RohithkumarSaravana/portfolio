@@ -60,17 +60,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <link rel="stylesheet" href="assets/css/style.css?v=3" />
+    <link rel="stylesheet" href="assets/css/style.css?v=13" />
 </head>
 
 <body>
     <!-- Ambient node-field network background -->
     <canvas id="nodeField" aria-hidden="true"></canvas>
-
-    <!-- Soft cursor glow -->
-    <div id="glow" aria-hidden="true"
-        style="position:fixed;inset:auto auto 0 0;transform:translate(-50%,-50%);width:32vmax;height:32vmax;pointer-events:none;background:radial-gradient(40vmax 40vmax at center, rgba(91,141,239,.08), transparent 60%);mix-blend:screen;z-index:10;opacity:.8;filter:blur(14px)">
-    </div>
 
     <!-- Skip link for accessibility -->
     <a href="#main"
@@ -81,8 +76,8 @@
     <header class="sticky top-0 z-50 glass border-b border-white/10 supports-[backdrop-filter]:bg-[#0e1116]/40">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
             <a href="#top" class="flex items-center gap-3">
-                <img src="assets/my_image.jpg" alt="Portrait of Rohithkumar Saravanan"
-                    class="h-9 w-9 rounded-full object-cover" />
+                <img src="assets/my_image_face.png" alt="Portrait of Rohithkumar Saravanan"
+                    class="h-9 w-9 rounded-full object-cover bg-[#171b22]" />
                 <span class="text-xs sm:text-sm tracking-widest uppercase text-white/70">Rohithkumar S</span>
             </a>
 
@@ -160,14 +155,9 @@
         <div class="absolute top-10 right-10 w-72 h-72 bg-[#5b8def]/10 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#eab05a]/10 rounded-full blur-3xl animate-pulse pointer-events-none" style="animation-delay: 2s;"></div>
 
-        <div class="relative max-w-6xl mx-auto px-4 pt-20 pb-16 sm:pb-20 text-center">
-            <div class="fade-in inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm mb-8 mx-auto">
-                <div class="w-2 h-2 bg-[#eab05a] rounded-full animate-pulse"></div>
-                <span class="text-xs tracking-widest uppercase font-semibold text-white/90">AI &amp; Machine Learning Engineer</span>
-            </div>
-
-            <div class="mb-0 relative z-10">
-                <h1 class="text-[6vw] font-black leading-[0.9] text-white">
+        <div class="relative max-w-6xl mx-auto px-4 pt-10 sm:pt-12 pb-16 sm:pb-20 text-center">
+            <div class="mb-0 relative z-0">
+                <h1 class="text-[clamp(2.25rem,6vw,5.5rem)] font-black leading-[1.15] text-white">
                     <span class="block overflow-hidden text-reveal-container">
                         <span class="pop-line inline-block">ROHITHKUMAR</span>
                     </span>
@@ -177,20 +167,19 @@
                 </h1>
             </div>
 
-            <div class="hero-figure reveal mx-auto -mt-4 sm:-mt-8" style="--d:200ms;">
-                <div class="hero-figure-glow"></div>
-                <img src="assets/my_image_cutout.png" alt="Rohithkumar Saravanan" class="hero-figure-img" />
-                <div class="hero-figure-fade"></div>
+            <div class="fade-in fade-in-2 hero-portrait-row -mt-2 sm:-mt-10 md:-mt-14 mb-8">
+                <span class="hero-side-label hero-side-label-gold text-center sm:text-right order-2 sm:order-1">Artificial Intelligence</span>
+
+                <div class="hero-figure hero-figure-lg hero-figure-front reveal shrink-0 order-1 sm:order-2" style="--d:200ms;">
+                    <div class="hero-figure-glow"></div>
+                    <img src="assets/my_image_cutout.png" alt="Rohithkumar Saravanan" class="hero-figure-img" />
+                </div>
+
+                <span class="hero-side-label hero-side-label-gold text-center sm:text-left order-3">Machine Learning</span>
             </div>
 
-            <p class="fade-in fade-in-2 max-w-2xl mx-auto text-lg md:text-xl text-white/80 leading-relaxed -mt-2 sm:mt-0 mb-8">
-                I build intelligent systems using Deep Learning, Computer Vision, and Signal Processing — turning complex
-                biomedical data into real-world diagnostic impact. Currently pursuing a Master's in AI &amp; ML at the
-                University of Limerick.
-            </p>
-
             <div class="fade-in fade-in-4 flex flex-wrap gap-4 items-center justify-center">
-                <a class="px-6 py-3.5 rounded-full bg-white text-black font-bold text-base hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
+                <a class="px-6 py-3.5 rounded-full bg-white text-black font-bold text-base transition-all duration-300 inline-flex items-center gap-2 hover:-translate-y-1 hover:scale-[1.03] hover:shadow-xl"
                     href="#projects">
                     <span>View My Work</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -199,73 +188,69 @@
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </a>
-                <a class="px-6 py-3.5 rounded-full text-white font-bold transition-all duration-300 backdrop-blur-sm"
+                <a class="px-6 py-3.5 rounded-full text-white font-bold transition-all duration-300 backdrop-blur-sm hover:-translate-y-1 hover:scale-[1.03] hover:bg-white/10 hover:border-white/60"
                     style="border: 2px solid rgba(255, 255, 255, 0.3);" href="#about">Learn About Me</a>
-                <a class="px-6 py-3.5 rounded-full text-white font-semibold transition-all duration-300 backdrop-blur-sm inline-flex items-center gap-2"
-                    style="border: 2px solid rgba(91, 141, 239, 0.5); color: #8fb3f7;" href="#publications">
+                <a class="px-6 py-3.5 rounded-full text-white font-semibold transition-all duration-300 backdrop-blur-sm inline-flex items-center gap-2 hover:-translate-y-1 hover:scale-[1.03] hover:bg-[#5b8def]/10"
+                    style="border: 2px solid rgba(91, 141, 239, 0.5); color: #8fb3f7;" href="#contact">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                        <path d="M2 17l10 5 10-5"></path>
-                        <path d="M2 12l10 5 10-5"></path>
+                        <path d="M4 4h16v16H4z" opacity="0"></path>
+                        <path d="M22 6l-10 7L2 6"></path>
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                     </svg>
-                    View Publications
+                    Get in Touch
                 </a>
             </div>
         </div>
 
-        <!-- Impact strip -->
-        <div class="relative max-w-6xl mx-auto px-4 pb-16 sm:pb-20">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="reveal stat-tile" style="--d:0ms;">
-                    <div class="stat-num"><span data-count="1">0</span></div>
-                    <p class="stat-label">Springer Publication</p>
-                </div>
-                <div class="reveal stat-tile" style="--d:80ms;">
-                    <div class="stat-num"><span data-count="99.20" data-suffix="%">0%</span></div>
-                    <p class="stat-label">Peak Model Accuracy</p>
-                </div>
-                <div class="reveal stat-tile" style="--d:160ms;">
-                    <div class="stat-num"><span data-count="3">0</span></div>
-                    <p class="stat-label">Awards Won</p>
-                </div>
-                <div class="reveal stat-tile" style="--d:240ms;">
-                    <div class="stat-num"><span data-count="14">0</span></div>
-                    <p class="stat-label">Certifications</p>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- About -->
     <section id="about" class="py-16 md:py-20">
-        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-10 items-center">
-            <div class="md:col-span-7">
-                <h2 class="reveal text-3xl md:text-5xl font-extrabold leading-tight">About</h2>
-                <div class="reveal mt-6 text-white/80 space-y-5 text-lg" style="--d:80ms;">
-                    <p>I'm Rohithkumar Saravanan, an AI &amp; Machine Learning Engineer with a passion for building
-                        intelligent biomedical systems using deep learning, computer vision, and signal processing.</p>
-                    <p>Currently pursuing a Master's in Artificial Intelligence and Machine Learning at the University of
-                        Limerick, I bring hands-on research experience backed by a published Springer paper and multiple
-                        award-winning projects.</p>
-                    <p>From designing sEMG acquisition hardware for ALS diagnosis to achieving 99.20% classification
-                        accuracy using DenseNet on CT scans, I build systems that bridge the gap between cutting-edge AI
-                        research and real clinical impact.</p>
-                    <div class="flex flex-wrap gap-4 text-base pt-1">
-                        <a class="inline-flex items-center gap-2 text-white/80 hover:text-white slink"
-                            href="mailto:rohithrk.in@gmail.com">rohithrk.in@gmail.com</a>
-                        <a class="inline-flex items-center gap-2 text-white/80 hover:text-white slink"
-                            href="tel:+353892015368">+353 089 201 5368</a>
-                        <a class="inline-flex items-center gap-2 text-white/80 hover:text-white slink"
-                            href="Rohithkumar_Resume.pdf" download="Rohithkumar_Resume.pdf" target="_blank"
-                            rel="noopener noreferrer">Download Resume</a>
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="reveal text-3xl md:text-5xl font-extrabold leading-tight mb-10 text-center">About</h2>
+            <div class="grid md:grid-cols-12 gap-10 items-center">
+                <div class="md:col-span-7">
+                    <div class="reveal text-white/80 space-y-5 text-lg" style="--d:80ms;">
+                        <p>I'm Rohithkumar Saravanan, an AI &amp; Machine Learning Engineer with a passion for building
+                            intelligent biomedical systems using deep learning, computer vision, and signal processing.</p>
+                        <p>Currently pursuing a Master's in Artificial Intelligence and Machine Learning at the University of
+                            Limerick, I bring hands-on research experience backed by a published Springer paper and multiple
+                            award-winning projects.</p>
+                        <p>From designing sEMG acquisition hardware for ALS diagnosis to achieving 99.20% classification
+                            accuracy using DenseNet on CT scans, I build systems that bridge the gap between cutting-edge AI
+                            research and real clinical impact.</p>
+                        <div class="flex flex-wrap gap-4 text-base pt-1">
+                            <a class="inline-flex items-center gap-2 text-white/80 hover:text-white slink"
+                                href="mailto:rohithrk.in@gmail.com">rohithrk.in@gmail.com</a>
+                            <a class="inline-flex items-center gap-2 text-white/80 hover:text-white slink"
+                                href="tel:+353892015368">+353 089 201 5368</a>
+                            <a class="inline-flex items-center gap-2 text-white/80 hover:text-white slink"
+                                href="Rohithkumar_Resume.pdf" download="Rohithkumar_Resume.pdf" target="_blank"
+                                rel="noopener noreferrer">Download Resume</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="md:col-span-5">
-                <div class="reveal aspect-square rounded-3xl bg-white/5 border border-white/10 overflow-hidden"
-                    style="--d:180ms;">
-                    <img src="assets/my_image.jpg" alt="Rohithkumar Saravanan" class="w-full h-full object-cover" loading="lazy" />
+                <div class="md:col-span-5">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="reveal stat-tile" style="--d:0ms;">
+                            <div class="stat-num"><span data-count="99.20" data-suffix="%">0%</span></div>
+                            <p class="stat-label">Peak Model Accuracy</p>
+                        </div>
+                        <div class="reveal stat-tile" style="--d:80ms;">
+                            <div class="stat-num"><span data-count="3">0</span></div>
+                            <p class="stat-label">Awards Won</p>
+                        </div>
+                        <div class="reveal stat-tile" style="--d:160ms;">
+                            <div class="stat-num"><span data-count="14">0</span></div>
+                            <p class="stat-label">Certifications</p>
+                        </div>
+                        <div class="reveal stat-tile" style="--d:240ms;">
+                            <div class="stat-num"><span data-count="1">0</span></div>
+                            <p class="stat-label">Springer Publication</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -280,31 +265,31 @@
 
             <p class="text-white/40 text-xs uppercase tracking-widest mb-6">Core AI &amp; Machine Learning</p>
             <div class="skill-row flex flex-wrap justify-center gap-8 md:gap-12 mb-12">
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_python.png" alt="Python" loading="lazy"></div>
                     <p class="skill-label">Python</p>
                 </div>
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_tensorflow.png" alt="TensorFlow" loading="lazy"></div>
                     <p class="skill-label">TensorFlow</p>
                 </div>
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_pytorch.png" alt="PyTorch" loading="lazy"></div>
                     <p class="skill-label">PyTorch</p>
                 </div>
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_opencv.png" alt="OpenCV" loading="lazy"></div>
                     <p class="skill-label">OpenCV</p>
                 </div>
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_sklearn.png" alt="scikit-learn" loading="lazy"></div>
                     <p class="skill-label">Scikit-learn</p>
                 </div>
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_numpy.png" alt="NumPy" loading="lazy"></div>
                     <p class="skill-label">NumPy</p>
                 </div>
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_pandas.png" alt="Pandas" loading="lazy"></div>
                     <p class="skill-label">Pandas</p>
                 </div>
@@ -312,23 +297,23 @@
 
             <p class="text-white/40 text-xs uppercase tracking-widest mb-6">Languages &amp; Data</p>
             <div class="skill-row flex flex-wrap justify-center gap-8 md:gap-12 mb-12">
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_matlab.png" alt="Matlab" loading="lazy"></div>
                     <p class="skill-label">Matlab</p>
                 </div>
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_c.png" alt="C/C++" loading="lazy"></div>
                     <p class="skill-label">C / C++</p>
                 </div>
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_javascript.png" alt="JavaScript" loading="lazy"></div>
                     <p class="skill-label">JavaScript</p>
                 </div>
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_sql.png" alt="SQL" loading="lazy"></div>
                     <p class="skill-label">SQL</p>
                 </div>
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_html.png" alt="HTML/CSS" loading="lazy"></div>
                     <p class="skill-label">HTML/CSS</p>
                 </div>
@@ -336,19 +321,19 @@
 
             <p class="text-white/40 text-xs uppercase tracking-widest mb-6">Tools &amp; Platforms</p>
             <div class="skill-row flex flex-wrap justify-center gap-8 md:gap-12">
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_git.png" alt="Git" loading="lazy"></div>
                     <p class="skill-label">Git</p>
                 </div>
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_github.png" alt="GitHub" loading="lazy"></div>
                     <p class="skill-label">GitHub</p>
                 </div>
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_jupyter.png" alt="Jupyter" loading="lazy"></div>
                     <p class="skill-label">Jupyter</p>
                 </div>
-                <div class="flex flex-col items-center w-20 sm:w-24">
+                <div class="flex flex-col items-center w-20 sm:w-24 skill-float">
                     <div class="glass-circle"><img src="assets/skill_arduino.png" alt="Arduino" loading="lazy"></div>
                     <p class="skill-label">Arduino</p>
                 </div>
@@ -1004,7 +989,7 @@
         </div>
     </footer>
 
-    <script src="assets/js/main.js?v=2"></script>
+    <script src="assets/js/main.js?v=4"></script>
 </body>
 
 </html>

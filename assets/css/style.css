@@ -66,8 +66,67 @@ html {
 .hero-figure {
     position: relative;
     width: clamp(220px, 30vw, 380px);
-    aspect-ratio: 3 / 4;
+    /* Matches the cutout's actual pixel dimensions (970x1014) so
+       object-fit: contain doesn't waste box space as invisible
+       padding, which was pushing the visible photo content down
+       and preventing the overlap with the heading above it. */
+    aspect-ratio: 970 / 1014;
     z-index: 5;
+}
+
+/* Sized by viewport height so the portrait reads as the primary
+   focal point of the hero. */
+.hero-figure-lg {
+    width: auto;
+    height: clamp(440px, 66vh, 860px);
+    max-width: 78vw;
+}
+
+/* Row that flanks the portrait with the two role labels, vertically
+   centered against it (chest-level) on larger screens; stacks on
+   mobile where there isn't room beside the portrait. */
+.hero-portrait-row {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+    .hero-portrait-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(1rem, 5vw, 4rem);
+    }
+}
+
+.hero-side-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+    .hero-side-label {
+        font-size: 0.85rem;
+        letter-spacing: 0.14em;
+    }
+}
+
+/* Metallic gold gradient matching the name headline's accent. */
+.hero-side-label-gold {
+    background: linear-gradient(120deg, #c98a3e, #f7dba8 45%, #eab05a 65%, #c98a3e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-figure-glow {
@@ -78,6 +137,16 @@ html {
     z-index: 0;
 }
 
+/* Renders in front of the name heading, so the overlap reads as the
+   portrait sitting over the text rather than the text cutting into
+   the portrait. */
+.hero-figure-front {
+    z-index: 20;
+}
+
+/* Fades only the image's own bottom edge to transparent (revealing
+   the page background naturally) instead of painting a dark overlay
+   on top of it, so the suit stays at full brightness above the fade. */
 .hero-figure-img {
     position: relative;
     z-index: 1;
@@ -85,14 +154,8 @@ html {
     height: 100%;
     object-fit: contain;
     object-position: bottom;
-}
-
-.hero-figure-fade {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    background: linear-gradient(180deg, transparent 58%, var(--bg) 94%);
-    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
 }
 
 /* ---- Node-field ambient background ---- */
@@ -188,6 +251,28 @@ a.slink:hover {
 
 @keyframes fadeInUp {
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Skill bubble float ---- */
+@keyframes floatBubble {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(var(--float-x, 0), var(--float-y, -8px)); }
+}
+
+.skill-float {
+    animation: floatBubble var(--float-dur, 4s) ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+}
+
+.skill-float:nth-child(6n+1) { --float-dur: 4.2s; --float-delay: 0s; --float-y: -7px; --float-x: 2px; }
+.skill-float:nth-child(6n+2) { --float-dur: 5s; --float-delay: .4s; --float-y: -9px; --float-x: -3px; }
+.skill-float:nth-child(6n+3) { --float-dur: 3.6s; --float-delay: .8s; --float-y: -6px; --float-x: 3px; }
+.skill-float:nth-child(6n+4) { --float-dur: 4.8s; --float-delay: 1.1s; --float-y: -10px; --float-x: -2px; }
+.skill-float:nth-child(6n+5) { --float-dur: 3.9s; --float-delay: .2s; --float-y: -7px; --float-x: -4px; }
+.skill-float:nth-child(6n+6) { --float-dur: 4.5s; --float-delay: .6s; --float-y: -8px; --float-x: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+    .skill-float { animation: none; }
 }
 
 /* ---- Skills Circle ---- */
